@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserApi", "UserApi\UserApi.csproj", "{92A21214-449C-440C-B8BE-6EA166FDCC32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserWeb", "UserApi\UserWeb.csproj", "{92A21214-449C-440C-B8BE-6EA166FDCC32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApi", "SearchApi\SearchApi.csproj", "{E3AC6DEF-8721-4305-951A-C9F2A56EEF5D}"
 EndProject

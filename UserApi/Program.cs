@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using OigaTech.BusinessRules;
 using OigaTech.DataAccess;
+using OigaTech.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,11 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<OigaTechDBContext>(db =>
     db.UseSqlServer(
         builder.Configuration.GetConnectionString("OigaTechDBConnection")));
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserBusinessRules, UserBusinessRules>();
+
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,4 +36,5 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapControllers();
 app.Run();

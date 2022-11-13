@@ -1019,19 +1019,43 @@
           }
         }
       },
+      "OigaTech.BusinessRules/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "OigaTech.DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OigaTech.BusinessRules.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OigaTech.BusinessRules.dll": {}
+        }
+      },
       "OigaTech.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.Data.SqlClient": "5.0.1",
           "Microsoft.EntityFrameworkCore": "7.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
+          "OigaTech.Dto": "1.0.0"
         },
         "compile": {
           "bin/placeholder/OigaTech.DataAccess.dll": {}
         },
         "runtime": {
           "bin/placeholder/OigaTech.DataAccess.dll": {}
+        }
+      },
+      "OigaTech.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/OigaTech.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OigaTech.Dto.dll": {}
         }
       }
     }
@@ -3504,16 +3528,27 @@
         "version.txt"
       ]
     },
+    "OigaTech.BusinessRules/1.0.0": {
+      "type": "project",
+      "path": "../OigaTech.BusinessRules/OigaTech.BusinessRules.csproj",
+      "msbuildProject": "../OigaTech.BusinessRules/OigaTech.BusinessRules.csproj"
+    },
     "OigaTech.DataAccess/1.0.0": {
       "type": "project",
       "path": "../OigaTech.DataAccess/OigaTech.DataAccess.csproj",
       "msbuildProject": "../OigaTech.DataAccess/OigaTech.DataAccess.csproj"
+    },
+    "OigaTech.Dto/1.0.0": {
+      "type": "project",
+      "path": "../OigaTech.Dto/OigaTech.Dto.csproj",
+      "msbuildProject": "../OigaTech.Dto/OigaTech.Dto.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
+      "OigaTech.BusinessRules >= 1.0.0",
       "OigaTech.DataAccess >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
@@ -3545,6 +3580,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.BusinessRules\\OigaTech.BusinessRules.csproj": {
+              "projectPath": "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.BusinessRules\\OigaTech.BusinessRules.csproj"
+            },
             "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.DataAccess\\OigaTech.DataAccess.csproj": {
               "projectPath": "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.DataAccess\\OigaTech.DataAccess.csproj"
             }

@@ -82,3 +82,7 @@ C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\runtimes\browser
 C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.DataAccess.dll
 C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.DataAccess.pdb
+C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.Dto.dll
+C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.Dto.pdb
+C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.BusinessRules.dll
+C:\Users\user\Documents\Dev\OigaTech\SearchApi\bin\Debug\net6.0\OigaTech.BusinessRules.pdb

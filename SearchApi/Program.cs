@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using OigaTech.BusinessRules;
 using OigaTech.DataAccess;
+using OigaTech.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddDbContext<OigaTechDBContext>(db =>
         builder.Configuration.GetConnectionString("OigaTechDBConnection")));
 
 // Add services to the container.
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserBusinessRules, UserBusinessRules>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

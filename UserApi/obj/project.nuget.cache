@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SgU/ZTyPQPXtJE7/NKNgS/637qFJXZuEXOcOzRqOUC/6ooAL/sPSUcWIk1KYSy2Jl29a7RioyzNYXOD/o7s53w==",
+  "dgSpecHash": "/DT5xzj2rC7HtShKxd+R88LMPAUXi92b0Z8F5oyLO11mIJqg5txWGM/lDjweLNK8G2CilyxK+HZSFZFUNTHNoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\Dev\\OigaTech\\UserApi\\UserApi.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\Dev\\OigaTech\\UserApi\\UserWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

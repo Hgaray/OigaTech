@@ -947,6 +947,16 @@
             "rid": "win"
           }
         }
+      },
+      "OigaTech.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/OigaTech.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OigaTech.Dto.dll": {}
+        }
       }
     }
   },
@@ -3292,6 +3302,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "OigaTech.Dto/1.0.0": {
+      "type": "project",
+      "path": "../OigaTech.Dto/OigaTech.Dto.csproj",
+      "msbuildProject": "../OigaTech.Dto/OigaTech.Dto.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3299,7 +3314,8 @@
       "Microsoft.Data.SqlClient >= 5.0.1",
       "Microsoft.EntityFrameworkCore >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
+      "OigaTech.Dto >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3328,7 +3344,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.Dto\\OigaTech.Dto.csproj": {
+              "projectPath": "C:\\Users\\user\\Documents\\Dev\\OigaTech\\OigaTech.Dto\\OigaTech.Dto.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

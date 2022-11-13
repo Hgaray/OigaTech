@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OigaTech.BusinessRules\OigaTech.BusinessRules.csproj" />
     <ProjectReference Include="..\OigaTech.DataAccess\OigaTech.DataAccess.csproj" />
   </ItemGroup>
 
