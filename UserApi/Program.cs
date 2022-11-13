@@ -1,8 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using OigaTech.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+//// set options to DbCOntext
+builder.Services.AddDbContext<OigaTechDBContext>(db =>
+    db.UseSqlServer(
+        builder.Configuration.GetConnectionString("OigaTechDBConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

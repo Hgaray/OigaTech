@@ -1,4 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using OigaTech.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+//// set options to DbCOntext
+builder.Services.AddDbContext<OigaTechDBContext>(db =>
+    db.UseSqlServer(
+        builder.Configuration.GetConnectionString("OigaTechDBConnection")));
 
 // Add services to the container.
 
