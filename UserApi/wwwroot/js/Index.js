@@ -61,5 +61,6 @@ function save() {
     });
 }
 function search() {
-
+    const searching = $("#search").val();
+    console.log(searching)
 }

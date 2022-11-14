@@ -2,7 +2,6 @@ C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\bin\Debug\net6.0\OigaTech.Dto.
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\bin\Debug\net6.0\OigaTech.Dto.dll
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\bin\Debug\net6.0\ref\OigaTech.Dto.dll
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\bin\Debug\net6.0\OigaTech.Dto.pdb
-C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.csproj.AssemblyReference.cache
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.AssemblyInfoInputs.cache
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.AssemblyInfo.cs
@@ -10,3 +9,4 @@ C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.dll
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\ref\OigaTech.Dto.dll
 C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.pdb
+C:\Users\user\Documents\Dev\OigaTech\OigaTech.Dto\obj\Debug\net6.0\OigaTech.Dto.csproj.AssemblyReference.cache
