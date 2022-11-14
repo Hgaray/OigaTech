@@ -24,7 +24,28 @@ namespace SearchApi.Controllers
 
                 if (users.Any())
                 {
-                    return Ok(await _userBusinessRules.GetAll());
+                    return Ok(users);
+                }
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+        }
+        
+        [HttpGet]
+        [Route("Search")]
+        public async Task<IActionResult> Search([FromQuery]string search)
+        {
+            try
+            {
+                var users = await _userBusinessRules.Search(search);
+
+                if (users.Any())
+                {
+                    return Ok(users);
                 }
                 return NoContent();
             }

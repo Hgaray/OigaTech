@@ -4,7 +4,7 @@ var baseUrl = "https://localhost:52135/api";
 
 $(document).ready(function () {
 
-    if (localStorage.getItem('baseUrl') == undefined) {       
+    if (localStorage.getItem('baseUrl') == undefined) {
         localStorage.setItem('baseUrl', window.location.href);
     }
     baseUrl = localStorage.getItem('baseUrl');
@@ -52,7 +52,7 @@ function save() {
         contentType: "application/json",
         dataType: "json",
         success: function (result) {
-            alert("User created successful");            
+            alert("User created successful");
             GetAll();
         },
         error: function (error) {
@@ -62,5 +62,32 @@ function save() {
 }
 function search() {
     const searching = $("#search").val();
-    console.log(searching)
+    if (searching == "") {
+        GetAll();
+    }
+    else {
+        $.ajax({
+            type: "Get",
+            url: `${baseUrl}api/User/Search?search=${searching}`,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                let bodyTable = "";
+                $.each(result, function (index, item) {
+                    bodyTable += `<tr>
+                                <td align="center">${item.fullName}</td>
+                                <td align="center">${item.userName}</td>
+                                <td align="center"><a href="#">View</a></td>
+                            </tr>`
+                });
+
+                $("#users tbody").html(bodyTable);
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    }
+
 }

@@ -38,5 +38,10 @@ namespace OigaTech.BusinessRules
         {
             return _userRepository.GetAll();
         }
+
+        public Task<IEnumerable<UserDto>> Search(string search)
+        {
+            return _userRepository.Search(search);
+        }
     }
 }

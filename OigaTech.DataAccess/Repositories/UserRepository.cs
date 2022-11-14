@@ -50,10 +50,34 @@ namespace OigaTech.DataAccess.Repositories
                 return false;
             }
         }
-
         public bool ValidateUserName(string userName)
         {
             return _dbContext.User.Where(x => x.UserName == userName).Any();
+        }
+        public async Task<IEnumerable<UserDto>> Search(string search)
+        {
+            try
+            {
+                var query = _dbContext.User.Where(x => x.FullName.Contains(search)
+                || x.UserName.Contains(search));
+
+                if (query.Any())
+                {
+                    return await query.Select(x => new UserDto
+                    {
+                        UserId = x.UserId,
+                        FullName = x.FullName,
+                        UserName = x.UserName
+                    }).ToListAsync();
+                }
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

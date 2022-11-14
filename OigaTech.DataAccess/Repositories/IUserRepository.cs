@@ -12,5 +12,6 @@ namespace OigaTech.DataAccess.Repositories
         Task<bool> Add(UserDto user);
         bool ValidateUserName(string userName);
         Task<IEnumerable<UserDto>> GetAll();
+        Task<IEnumerable<UserDto>> Search(string search);
     }
 }

@@ -11,5 +11,6 @@ namespace OigaTech.BusinessRules
     {
         Task<bool> Add(UserDto user);
         Task<IEnumerable<UserDto>> GetAll();
+        Task<IEnumerable<UserDto>> Search(string search);
     }
 }

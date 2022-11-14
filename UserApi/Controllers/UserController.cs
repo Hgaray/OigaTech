@@ -51,7 +51,27 @@ namespace UserWeb.Controllers
         [Route("Search")]
         public async Task<IActionResult> Search([FromQuery]string search)
         {
-            return Ok(1);
+            try
+            {
+                var users = await _daprClient.InvokeMethodAsync<IEnumerable<UserDto>>(
+                HttpMethod.Get,
+                SearchApi,
+                $"Api/User/Search?search={search}");
+
+                if (users.Any())
+                {
+                    return Ok(users);
+                }
+                else
+                {
+                    return NoContent();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPost]
