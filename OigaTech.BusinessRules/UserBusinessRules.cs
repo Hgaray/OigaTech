@@ -33,5 +33,10 @@ namespace OigaTech.BusinessRules
                 throw;
             }
         }
+
+        public Task<IEnumerable<UserDto>> GetAll()
+        {
+            return _userRepository.GetAll();
+        }
     }
 }

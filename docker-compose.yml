@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  userweb:
+    image: ${DOCKER_REGISTRY-}userweb    
+    build:
+      context: .
+      dockerfile: UserApi/Dockerfile
+    ports:
+      - "51000:50001"
+
+  userweb-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "UserApi", "-app-port", "80" ]
+    depends_on:
+        - userweb
+    network_mode: "service:userweb"
+
+  searchapi:
+    image: ${DOCKER_REGISTRY-}searchapi    
+    build:
+      context: .
+      dockerfile: SearchApi/Dockerfile
+    ports:
+      - "52000:50001"
+
+  searchapi-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "SearchApi", "-app-port", "80" ]
+    depends_on:
+      - searchapi
+    network_mode: "service:searchapi"  

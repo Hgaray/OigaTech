@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dapr.Client;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OigaTech.BusinessRules;
 using OigaTech.Dto;
@@ -10,13 +11,45 @@ namespace UserWeb.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBusinessRules _userBusinessRules;
-        public UserController(IUserBusinessRules userBusinessRules)
+        private readonly DaprClient _daprClient;
+        private const string SearchApi = "SearchApi";
+        public UserController(IUserBusinessRules userBusinessRules, DaprClient daprClient)
         {
             _userBusinessRules = userBusinessRules;
+            _daprClient = daprClient;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var users = await _daprClient.InvokeMethodAsync<IEnumerable<UserDto>>(
+                HttpMethod.Get,
+                SearchApi,
+                "Api/User/GetAll");
+
+                if (users.Any())
+                {
+                    return Ok(users);
+                }
+                else
+                {
+                    return NoContent();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+        }
+
+        [HttpGet]
+        [Route("Search")]
+        public async Task<IActionResult> Search([FromQuery]string search)
         {
             return Ok(1);
         }

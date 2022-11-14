@@ -10,5 +10,6 @@ namespace OigaTech.BusinessRules
     public interface IUserBusinessRules
     {
         Task<bool> Add(UserDto user);
+        Task<IEnumerable<UserDto>> GetAll();
     }
 }

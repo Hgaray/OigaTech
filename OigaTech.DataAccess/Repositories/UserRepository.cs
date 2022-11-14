@@ -1,4 +1,5 @@
-﻿using OigaTech.DataAccess.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using OigaTech.DataAccess.Models;
 using OigaTech.Dto;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,26 @@ namespace OigaTech.DataAccess.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<UserDto>> GetAll()
+        {
+            try
+            {
+                var users = await _dbContext.User.Select(x => new UserDto
+                {
+                    UserId = x.UserId,
+                    FullName = x.FullName,
+                    UserName = x.UserName
+                }).ToListAsync();
+
+                return users;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
         public async Task<bool> Add(UserDto user)
         {
             try
