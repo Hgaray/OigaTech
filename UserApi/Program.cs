@@ -13,10 +13,6 @@ builder.Services.AddDbContext<OigaTechDBContext>(db =>
     db.UseSqlServer(
         builder.Configuration.GetConnectionString("OigaTechDBConnection")));
 
-//builder.Services.AddDbContext<OigaTechDBContext>(db =>
-//    db.UseSqlServer("data source=DESKTOP-CSKLPH3,1433;initial catalog=OigaTechDataBase;User Id=OigaUser;Password=Octubr3_2022;Encrypt=False;Trusted_Connection=False;",
-//    builder=>builder.EnableRetryOnFailure()));
-
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserBusinessRules, UserBusinessRules>();
 

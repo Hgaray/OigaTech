@@ -34,14 +34,33 @@ namespace OigaTech.BusinessRules
             }
         }
 
-        public Task<IEnumerable<UserDto>> GetAll()
+        public async Task<IEnumerable<UserDto>> GetAll()
         {
-            return _userRepository.GetAll();
+            var users = await _userRepository.GetAll();
+            return users.OrderBy(x => x.FullName).ThenBy(x => x.UserName);
         }
 
-        public Task<IEnumerable<UserDto>> Search(string search)
+        public async Task<IEnumerable<UserDto>> Search(string search)
         {
-            return _userRepository.Search(search);
+            var queryList = search.Split(" ");
+            var userList = new List<UserDto>();
+            var taskList = new List<Task<IEnumerable<UserDto>>>();
+            foreach (var item in queryList)
+            {
+                taskList.Add(_userRepository.Search(item));
+            }
+
+            await Task.WhenAll(taskList);
+
+            foreach (var item in taskList)
+            {
+                if (item.Result != null && item.Result.Any())
+                {
+                    userList.AddRange(item.Result);
+                }
+
+            }
+            return userList.OrderBy(x => x.FullName).ThenBy(x => x.UserName);
         }
     }
 }

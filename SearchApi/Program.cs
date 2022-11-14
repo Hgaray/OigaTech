@@ -6,16 +6,11 @@ using OigaTech.DataAccess.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
-//// set options to DbCOntext
 builder.Services.AddDbContext<OigaTechDBContext>(db =>
     db.UseSqlServer(
-        builder.Configuration.GetConnectionString("OigaTechDBConnection")));
+        builder.Configuration.GetConnectionString("OigaTechDBConnection")), ServiceLifetime.Transient);
 
 
-//builder.Services.AddDbContext<OigaTechDBContext>(db =>
-//    db.UseSqlServer("data source=DESKTOP-CSKLPH3,1433;initial catalog=OigaTechDataBase;User Id=OigaUser;Password=Octubr3_2022;Encrypt=False;Trusted_Connection=False;",
-//    builder => builder.EnableRetryOnFailure()));
 
 // Add services to the container.
 builder.Services.AddTransient<IUserRepository, UserRepository>();

@@ -4,29 +4,46 @@
     ViewData["Title"] = "Home page";
 }
 <div class="jumbotron">
+    <div class="row">
+        <div class="col-md-5 m-2" style="border:solid 2px black;">
+            <div class="row m-5">
+                <div class="col-md-5">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" />
+                </div>
+            </div>
+            <div class="row m-5">
+                <div class="col-md-5">
+                    <label for="userName">UserName</label>
+                    <input type="text" id="userName" />
+                </div>
 
-    <div class="row m-5">
-        <div class="col-md-5">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" />
-        </div>        
+            </div>
+            <div class="row m-5">
+                <div class="col-md-5">
+                    <button type="button" id="btnSave" class="btn btn-lg btn-primary" onclick="save()">
+                        Save
+                    </button>
+                </div>
 
-    </div>
-    <div class="row m-5">        
-        <div class="col-md-5">
-            <label for="userName">UserName</label>
-            <input type="text" id="userName" />
+            </div>
         </div>
-
-    </div>
-    <div class="row m-5">
-        <div class="col-md-5">
-            <button type="button" id="btnSave" class="btn btn-lg btn-primary" onclick="save()">
-                Save
-            </button>
+        <div class="col-md-5 m-2" style="border:solid 2px green;">
+            <h2>User Selected</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Full Name:</label>
+                   <strong> <span id="fullNameView"></span></strong>
+                </div>
+                <div class="col-md-6">
+                     <label>Full Name:</label>
+                    <strong><span id="userNameView"></span></strong>
+                </div>
+            </div>
         </div>
-
     </div>
+
+
 
 </div>
 
@@ -36,7 +53,7 @@
     <div class="row">
         <div class="col-md-6">
             <label for="search">Search</label>
-            <input type="text" id="search" onkeyup="search()"/>
+            <input type="text" id="search" onkeyup="search(event)" />
         </div>
 
     </div>

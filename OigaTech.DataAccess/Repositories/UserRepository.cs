@@ -58,17 +58,17 @@ namespace OigaTech.DataAccess.Repositories
         {
             try
             {
-                var query = _dbContext.User.Where(x => x.FullName.Contains(search)
-                || x.UserName.Contains(search));
+                var query = await _dbContext.User.Where(x => x.FullName.Contains(search)
+                || x.UserName.Contains(search)).ToListAsync();
 
                 if (query.Any())
                 {
-                    return await query.Select(x => new UserDto
+                    return  query.Select(x => new UserDto
                     {
                         UserId = x.UserId,
                         FullName = x.FullName,
                         UserName = x.UserName
-                    }).ToListAsync();
+                    });
                 }
                 return null;
 

@@ -20,13 +20,7 @@ namespace SearchApi.Controllers
         {
             try
             {
-                var users = await _userBusinessRules.GetAll();
-
-                if (users.Any())
-                {
-                    return Ok(users);
-                }
-                return NoContent();
+                return Ok(await _userBusinessRules.GetAll());
             }
             catch (Exception)
             {
@@ -41,15 +35,9 @@ namespace SearchApi.Controllers
         {
             try
             {
-                var users = await _userBusinessRules.Search(search);
-
-                if (users.Any())
-                {
-                    return Ok(users);
-                }
-                return NoContent();
+                return Ok(await _userBusinessRules.Search(search));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
