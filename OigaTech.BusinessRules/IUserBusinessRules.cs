@@ -10,7 +10,7 @@ namespace OigaTech.BusinessRules
     public interface IUserBusinessRules
     {
         Task<bool> Add(UserDto user);
-        Task<IEnumerable<UserDto>> GetAll();
-        Task<IEnumerable<UserDto>> Search(string search);
+        Task<UserPaginatedResponse> GetAll();
+        Task<UserPaginatedResponse> Search(UserPaginatedRequest parameters);
     }
 }

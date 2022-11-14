@@ -21,19 +21,6 @@ function GetAll() {
         success: function (result) {
 
             populateTable(result);
-
-            //console.log(result);
-            //userList = result;
-            //let bodyTable = "";
-            //$.each(result, function (index, item) {
-            //    bodyTable += `<tr>
-            //                    <td align="center">${item.fullName}</td>
-            //                    <td align="center">${item.userName}</td>
-            //                    <td align="center"><a href="#" onclick=view(${item.userId})>View</a></td>
-            //                </tr>`
-            //});
-
-            //$("#users tbody").html(bodyTable);
         },
         error: function (error) {
             console.log(error)
@@ -59,10 +46,13 @@ function save() {
             GetAll();
         },
         error: function (error) {
-            console.log(error)
+            alert(error.responseText);
+            console.log(error.responseText)
         }
     });
 }
+
+
 function search(event) {
 
     var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -74,24 +64,19 @@ function search(event) {
         GetAll();
     }
     else {
+        const parameters = {
+            search: searching,
+            pageIndex:1
+        }
+
         $.ajax({
-            type: "Get",
-            url: `${baseUrl}api/User/Search?search=${searching}`,
+            type: "Post",
+            data: JSON.stringify(parameters),
+            url: `${baseUrl}api/User/Search`,
             contentType: "application/json",
             dataType: "json",
             success: function (result) {
-                populateTable(result);
-                //console.log(result);
-                //let bodyTable = "";
-                //$.each(result, function (index, item) {
-                //    bodyTable += `<tr>
-                //                <td align="center">${item.fullName}</td>
-                //                <td align="center">${item.userName}</td>
-                //                <td align="center"><a href="#" onclick=view(${item.userId})>View</a></td>
-                //            </tr>`
-                //});
-
-                //$("#users tbody").html(bodyTable);
+                populateTable(result);                
             },
             error: function (error) {
                 console.log(error)
@@ -101,7 +86,7 @@ function search(event) {
 
 }
 function view(id) {
-    const userView = userList.find(x => x.userId == id);
+    const userView = userList.users.find(x => x.userId == id);
     $("#fullNameView").text(userView.fullName);
     $("#userNameView").text(userView.userName);
 }
@@ -109,16 +94,22 @@ function view(id) {
 function populateTable(data) {
     console.log(data)
     let bodyTable = "";
-    if (data != undefined && data.length) {
+    if (data != undefined && data.users != undefined && data.users.length) {
         userList = data;
 
-        $.each(data, function (index, item) {
+        $.each(data.users, function (index, item) {
             bodyTable += `<tr>
                                 <td align="center">${item.fullName}</td>
                                 <td align="center">${item.userName}</td>
                                 <td align="center"><a href="#" onclick=view(${item.userId})>View</a></td>
                             </tr>`
         });
+
+        let pages = "";
+        for (var i = 1; i <= data.totalPages; i++) {
+            pages += `<option value=${i}>${i}</option>`
+        }
+        $("#page").html(pages);
     }
     else {
         bodyTable +="<tr><td colspan=3> No results found</td></tr>"
@@ -126,4 +117,32 @@ function populateTable(data) {
     
 
     $("#users tbody").html(bodyTable);
+}
+
+function pageChange(event) {
+
+    const searching = $("#search").val();
+
+    const parameters = {
+        search: searching,
+        pageIndex: event.value
+    }
+    const selecteIndex = event.selectedIndex;
+    console.log(event, event.selectedIndex, selecteIndex);
+
+    $.ajax({
+        type: "Post",
+        data: JSON.stringify(parameters),
+        url: `${baseUrl}api/User/Search`,
+        contentType: "application/json",
+        dataType: "json",
+        success: function (result) {
+            populateTable(result);
+            event.selectedIndex = selecteIndex;
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
+    
 }

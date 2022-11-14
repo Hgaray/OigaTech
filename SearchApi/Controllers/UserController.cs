@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OigaTech.BusinessRules;
+using OigaTech.Dto;
 
 namespace SearchApi.Controllers
 {
@@ -29,13 +30,13 @@ namespace SearchApi.Controllers
 
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("Search")]
-        public async Task<IActionResult> Search([FromQuery]string search)
+        public async Task<IActionResult> Search([FromBody] UserPaginatedRequest parameters)
         {
             try
             {
-                return Ok(await _userBusinessRules.Search(search));
+                return Ok(await _userBusinessRules.Search(parameters));
             }
             catch (Exception ex)
             {

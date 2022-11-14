@@ -17,10 +17,11 @@ namespace OigaTech.DataAccess.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<UserDto>> GetAll()
+        public async Task<UserPaginatedResponse> GetAll()
         {
             try
             {
+
                 var users = await _dbContext.User.Select(x => new UserDto
                 {
                     UserId = x.UserId,
@@ -28,7 +29,16 @@ namespace OigaTech.DataAccess.Repositories
                     UserName = x.UserName
                 }).ToListAsync();
 
-                return users;
+                var result = new UserPaginatedResponse
+                {
+
+                    Users = users,
+                    PageIndex = 0,
+                    TotalCount = users.Count(),
+                    TotalPages = users.Any() ? Math.Ceiling((decimal)users.Count() / 10) : 0
+                };
+
+                return result;
             }
             catch (Exception ex)
             {

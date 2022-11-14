@@ -25,14 +25,14 @@ namespace UserWeb.Controllers
         {
             try
             {
-                var users = await _daprClient.InvokeMethodAsync<IEnumerable<UserDto>>(
+                var result = await _daprClient.InvokeMethodAsync<UserPaginatedResponse>(
                 HttpMethod.Get,
                 SearchApi,
                 "Api/User/GetAll");
 
-                if (users.Any())
+                if (result.Users.Any())
                 {
-                    return Ok(users);
+                    return Ok(result);
                 }
                 else
                 {
@@ -47,20 +47,20 @@ namespace UserWeb.Controllers
 
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Search")]
-        public async Task<IActionResult> Search([FromQuery]string search)
+        public async Task<IActionResult> Search([FromBody]UserPaginatedRequest parameters)
         {
             try
             {
-                var users = await _daprClient.InvokeMethodAsync<IEnumerable<UserDto>>(
-                HttpMethod.Get,
+                var result = await _daprClient.InvokeMethodAsync<UserPaginatedRequest,UserPaginatedResponse>(
+                HttpMethod.Post,
                 SearchApi,
-                $"Api/User/Search?search={search}");
+                $"Api/User/Search",parameters);
 
-                if (users.Any())
+                if (result.Users.Any())
                 {
-                    return Ok(users);
+                    return Ok(result);
                 }
                 else
                 {

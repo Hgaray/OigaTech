@@ -34,17 +34,21 @@ namespace OigaTech.BusinessRules
             }
         }
 
-        public async Task<IEnumerable<UserDto>> GetAll()
+        public async Task<UserPaginatedResponse> GetAll()
         {
-            var users = await _userRepository.GetAll();
-            return users.OrderBy(x => x.FullName).ThenBy(x => x.UserName);
+            var result = await _userRepository.GetAll();
+            result.PageIndex = 1;
+            result = Page(result);
+
+            return result;
         }
 
-        public async Task<IEnumerable<UserDto>> Search(string search)
+        public async Task<UserPaginatedResponse> Search(UserPaginatedRequest parameters)
         {
-            var queryList = search.Split(" ");
-            var userList = new List<UserDto>();
+            var queryList = parameters.Search.Split(" ");
             var taskList = new List<Task<IEnumerable<UserDto>>>();
+            var result = new UserPaginatedResponse() { Users = new List<UserDto>()};
+
             foreach (var item in queryList)
             {
                 taskList.Add(_userRepository.Search(item));
@@ -56,11 +60,25 @@ namespace OigaTech.BusinessRules
             {
                 if (item.Result != null && item.Result.Any())
                 {
-                    userList.AddRange(item.Result);
+                    result.Users.AddRange(item.Result);
                 }
 
             }
-            return userList.OrderBy(x => x.FullName).ThenBy(x => x.UserName);
+            result.PageIndex = parameters.PageIndex;
+            result = Page(result);
+
+            return result;
+        }
+
+        private UserPaginatedResponse Page(UserPaginatedResponse data)
+        {
+
+            data.Users = data.Users.OrderBy(x => x.FullName).ThenBy(x => x.UserName).ToList();
+            data.TotalCount = data.Users.Count();            
+            data.TotalPages = data.Users.Any() ? Math.Ceiling((decimal)data.Users.Count() / 10) : 0;
+            int start = (data.PageIndex * 10)-10;
+            data.Users = data.Users.Skip(start).Take(10).ToList();
+            return data;
         }
     }
 }
