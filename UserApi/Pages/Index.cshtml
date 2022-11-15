@@ -5,7 +5,7 @@
 }
 <div class="jumbotron">
     <div class="row">
-        <div class="col-md-5 m-2" style="border:solid 2px black;">
+        <div class="col-md-5 " style="border:solid 2px black;">
             <div class="row m-5">
                 <div class="col-md-5">
                     <label for="fullName">Full Name</label>
@@ -15,7 +15,7 @@
             <div class="row m-5">
                 <div class="col-md-5">
                     <label for="userName">UserName</label>
-                    <input type="text" id="userName" />
+                    <input type="text" id="userName"  />
                 </div>
 
             </div>
@@ -28,7 +28,8 @@
 
             </div>
         </div>
-        <div class="col-md-5 m-2" style="border:solid 2px green;">
+        <div class="col-md-1"></div>
+        <div class="col-md-5 " style="border:solid 2px green;">
             <h2>User Selected</h2>
             <div class="row">
                 <div class="col-md-6">
@@ -49,12 +50,13 @@
 
 <div class="row m-5"></div>
 
-<div class="container m-5" style="border:solid 1px black;">
-    <div class="row m-5">
+<div class="container" style="border:solid 1px black;">
+    <div class="row p-3">
         <div class="col-md-5">
             <label for="search">Search</label>
             <input type="text" id="search" onkeyup="search(event)" />
         </div>
+        <div class="col-md-2"></div>
         <div class="col-md-5">
              <label for="page">Page</label>
             <select id="page" onchange="pageChange(this)">
@@ -64,7 +66,7 @@
 
     </div>
     <div class="row m-5" style="border:solid 1px green;">
-        <table class='table table-hover' style='font-size:14px;' id="users">
+        <table class='table table-hover table-striped' style='font-size:14px;' id="users">
             <thead>
                 <tr>
                     <td align="center" width="40%"><strong>Full Name</strong></td>
