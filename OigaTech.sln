@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserWeb", "UserApi\UserWeb.csproj", "{92A21214-449C-440C-B8BE-6EA166FDCC32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserWeb", "UserApi\UserWeb.csproj", "{92A21214-449C-440C-B8BE-6EA166FDCC32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchApi", "SearchApi\SearchApi.csproj", "{E3AC6DEF-8721-4305-951A-C9F2A56EEF5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchApi", "SearchApi\SearchApi.csproj", "{E3AC6DEF-8721-4305-951A-C9F2A56EEF5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OigaTech.BusinessRules", "OigaTech.BusinessRules\OigaTech.BusinessRules.csproj", "{3DDC70F5-E8AA-4795-95F0-091D0924971D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OigaTech.BusinessRules", "OigaTech.BusinessRules\OigaTech.BusinessRules.csproj", "{3DDC70F5-E8AA-4795-95F0-091D0924971D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OigaTech.DataAccess", "OigaTech.DataAccess\OigaTech.DataAccess.csproj", "{E228F291-6E9A-41C3-81D4-9B854B641B6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OigaTech.DataAccess", "OigaTech.DataAccess\OigaTech.DataAccess.csproj", "{E228F291-6E9A-41C3-81D4-9B854B641B6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OigaTech.Dto", "OigaTech.Dto\OigaTech.Dto.csproj", "{9D55AD11-2622-468A-9323-A579E05284DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OigaTech.Dto", "OigaTech.Dto\OigaTech.Dto.csproj", "{9D55AD11-2622-468A-9323-A579E05284DF}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AD90197D-62D2-44A8-8644-090953BABA61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OigaTech.Test", "OigaTech.Test\OigaTech.Test.csproj", "{ADBB1471-4FDC-48B2-9DC6-FA9F253D6B1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{AD90197D-62D2-44A8-8644-090953BABA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD90197D-62D2-44A8-8644-090953BABA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD90197D-62D2-44A8-8644-090953BABA61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBB1471-4FDC-48B2-9DC6-FA9F253D6B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBB1471-4FDC-48B2-9DC6-FA9F253D6B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBB1471-4FDC-48B2-9DC6-FA9F253D6B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBB1471-4FDC-48B2-9DC6-FA9F253D6B1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
