@@ -1,0 +1,2 @@
+1- Restore database using "Database/OigaTechDataBase.bacpac" file 
+2- Change connectionString with right credential of your machine/server
