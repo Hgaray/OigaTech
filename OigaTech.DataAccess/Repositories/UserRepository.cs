@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OigaTech.DataAccess.Repositories
@@ -64,23 +65,45 @@ namespace OigaTech.DataAccess.Repositories
         {
             return _dbContext.User.Where(x => x.UserName == userName).Any();
         }
-        public async Task<IEnumerable<UserDto>> Search(string search)
+        public async Task<List<UserDto>> Search(string search)
         {
             try
             {
-                var query = await _dbContext.User.Where(x => x.FullName.Contains(search)
-                || x.UserName.Contains(search)).ToListAsync();
+                var result = new List<UserDto>();
 
-                if (query.Any())
+                if (!string.IsNullOrEmpty(search))
                 {
-                    return  query.Select(x => new UserDto
+                    string searchNoAccent = Regex.Replace(search.Normalize(NormalizationForm.FormD), @"[^a-zA-z0-9 ]+", "");
+                    var words = searchNoAccent.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    var query = words.Select(x =>
+                    {
+                        return _dbContext.User.Where(y => y.UserName.Contains(x)
+                        || y.FullName.Contains(x)).Select(x => new UserDto
+                        {
+                            UserId = x.UserId,
+                            FullName = x.FullName,
+                            UserName = x.UserName
+                        });
+
+                    });
+
+                    if (query != null && query.Any())
+                    {
+                        query.ToList().ForEach(x => result.AddRange(x));
+                    }
+                }
+                else
+                {
+                    result = await _dbContext.User.Select(x => new UserDto
                     {
                         UserId = x.UserId,
                         FullName = x.FullName,
                         UserName = x.UserName
-                    });
+                    }).ToListAsync();
                 }
-                return null;
+
+                return result;
 
             }
             catch (Exception ex)

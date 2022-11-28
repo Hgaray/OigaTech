@@ -45,25 +45,11 @@ namespace OigaTech.BusinessRules
 
         public async Task<UserPaginatedResponse> Search(UserPaginatedRequest parameters)
         {
-            var queryList = parameters.Search.Split(" ");
-            var taskList = new List<Task<IEnumerable<UserDto>>>();
             var result = new UserPaginatedResponse() { Users = new List<UserDto>()};
 
-            foreach (var item in queryList)
-            {
-                taskList.Add(_userRepository.Search(item));
-            }
+            result.Users = await _userRepository.Search(parameters.Search);
 
-            await Task.WhenAll(taskList);
 
-            foreach (var item in taskList)
-            {
-                if (item.Result != null && item.Result.Any())
-                {
-                    result.Users.AddRange(item.Result);
-                }
-
-            }
             result.PageIndex = parameters.PageIndex;
             result = Page(result);
 
